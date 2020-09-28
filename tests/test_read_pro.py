@@ -10,7 +10,7 @@ class TestTools(unittest.TestCase):
 
         variable = 'element density (kg m-3)'
 
-        self.list_of_dfs = tools.read_pro('../examples/sample.pro')
+        self.list_of_dfs = tools.read_pro('examples/sample.pro')
 
         self.info = tools.create_grid(self.list_of_dfs,variable)
 
