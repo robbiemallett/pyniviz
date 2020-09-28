@@ -329,7 +329,8 @@ def read_pro(path,var_to_plot= None):
     if var_to_plot:
         var_codes = ['0500','0501',pro_code_dict(var_to_plot,inverse=True)]
     else:
-        var_codes = [pro_code_dict(return_all=True).keys()]
+        var_codes = ['0500', '0501', '0502', '0503', '0506', '0512', '0513', '0515',
+                     '0516', '0535', '0540', '0541']
 
     # Set up the dictionary to be returned. Dictionary is organised by variable name.
 
