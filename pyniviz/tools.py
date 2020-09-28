@@ -36,9 +36,9 @@ def variable_shortenings(code):
                     'brine_sal':'brine salinity (g/kg)',
                     'thickness':'thickness_m'}
 
-    if code.lower() in shortenings.keys():
+    if code.lower() in list(shortenings.keys()):
         return(shortenings[code])
-    elif code in shortenings.items():
+    elif code in list(shortenings.values()):
         return(code)
     else:
         print(f'Variable not recognised, must be from the following {list(zip(shortenings.keys(), shortenings.items()))}')

@@ -13,7 +13,7 @@ end_date = datetime.datetime(year=2020,
 
 
 main.plot_pro('sample.pro',
-                 variable= 'temperature',
+                 variable= 'element temperature (degC)',
                  ymin=400,
                  ymax=415,
                  xmin=start_date,
