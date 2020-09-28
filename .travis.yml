@@ -5,9 +5,8 @@ before_install:
   - python --version
   - pip install -U pip
   - pip install codecov
+  - python setup.py
   - chmod +x tests/test_read_pro.py
-install:
-  pip install -r requirements.txt
 script:
   - tests/test_read_pro.py
 after_success:

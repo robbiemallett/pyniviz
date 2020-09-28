@@ -124,10 +124,10 @@ def transform_grid_for_grain_type(grid):
 
 def create_grid(spl,
                  var_to_plot,
-                 xmin,
-                 xmax,
-                 ymin,
-                 ymax):
+                 xmin=None,
+                 xmax=None,
+                 ymin=None,
+                 ymax=None):
 
     """Takes the list of dataframes and makes a 2D numpy array of a given variable and some info.
 
