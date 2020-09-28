@@ -1,4 +1,6 @@
 name: pyniviz
+sphinx:
+  configuration: docs/source/conf.py
 channels:
   - defaults
 dependencies:
