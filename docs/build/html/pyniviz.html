@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pyniviz package &mdash; pyniviz 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="pyniviz" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pyniviz
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pyniviz package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyniviz.main">pyniviz.main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyniviz.tools">pyniviz.tools module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyniviz">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyniviz</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>pyniviz package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pyniviz.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pyniviz-package">
+<h1>pyniviz package<a class="headerlink" href="#pyniviz-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pyniviz.main">
+<span id="pyniviz-main-module"></span><h2>pyniviz.main module<a class="headerlink" href="#module-pyniviz.main" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pyniviz.main.plot_pro">
+<code class="sig-prename descclassname">pyniviz.main.</code><code class="sig-name descname">plot_pro</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">variable</span></em>, <em class="sig-param"><span class="n">vmin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">vmax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xmin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xmax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ymin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ymax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">file_name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">c_scheme</span><span class="o">=</span><span class="default_value">'plasma_r'</span></em>, <em class="sig-param"><span class="n">yax_shift</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyniviz.main.plot_pro" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – String pointing to the location of the .PRO file to be read</p></li>
+<li><p><strong>variable</strong> (<em>str</em>) – Variable to plot, can be a .pro recognised code or a niviz approved shortening</p></li>
+<li><p><strong>vmin</strong> (<em>float</em>) – optional, min value for the colorbar</p></li>
+<li><p><strong>vmax</strong> (<em>float</em>) – optional, max value for the colorbar</p></li>
+<li><p><strong>xmin</strong> (<em>datetime.datetime</em>) – optional, represents time from which data appears on the plot</p></li>
+<li><p><strong>xmax</strong> (<em>datetime.datetime</em>) – optional, represents time to which data appears on the plot</p></li>
+<li><p><strong>ymin</strong> (<em>float</em>) – optional, represents min height to which data appears on the plot</p></li>
+<li><p><strong>ymax</strong> (<em>float</em>) – optional, represents max height to which data appears on the plot</p></li>
+<li><p><strong>file_name</strong> (<em>str</em>) – optional, if present represents where the image should be saved</p></li>
+<li><p><strong>c_scheme</strong> (<em>str</em>) – optional, represents the scheme of the colorbar e.g. ‘plasma’, ‘Blues’.</p></li>
+<li><p><strong>yax_shift</strong> (<em>float</em>) – optional, shifts the y axis ticks down a bit (useful if shifted to a ref value , e.g. 400cm)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyniviz.tools">
+<span id="pyniviz-tools-module"></span><h2>pyniviz.tools module<a class="headerlink" href="#module-pyniviz.tools" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pyniviz.tools.create_grid">
+<code class="sig-prename descclassname">pyniviz.tools.</code><code class="sig-name descname">create_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spl</span></em>, <em class="sig-param"><span class="n">var_to_plot</span></em>, <em class="sig-param"><span class="n">xmin</span></em>, <em class="sig-param"><span class="n">xmax</span></em>, <em class="sig-param"><span class="n">ymin</span></em>, <em class="sig-param"><span class="n">ymax</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyniviz.tools.create_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes the list of dataframes and makes a 2D numpy array of a given variable and some info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spl</strong> (<em>list</em>) – list of dataframes, each frame representing the snowpack at a point in time</p></li>
+<li><p><strong>var_to_plot</strong> – (string): a .PRO recognized string code of the variable to plot. Must be a col in dataframes</p></li>
+<li><p><strong>xmin</strong> (<em>datetime.datetime</em>) – dt object representing the time from which the list of dataframes should be analysed</p></li>
+<li><p><strong>xmax</strong> (<em>datetime.datetime</em>) – dt object representing the time to which the list of dataframes should be analysed</p></li>
+<li><p><strong>ymin</strong> (<em>float</em>) – value in centimeters representing the height from which the .PRO snowpack should be analysed</p></li>
+<li><p><strong>ymax</strong> (<em>float</em>) – value in centimeters representing the height to which the .PRO snowpack should be analysed</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a dictionary containing both the grid and some other info about its x/y axes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>return_dict (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyniviz.tools.get_grain_tick_labels">
+<code class="sig-prename descclassname">pyniviz.tools.</code><code class="sig-name descname">get_grain_tick_labels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyniviz.tools.get_grain_tick_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of labels for a grain-type classification plot</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyniviz.tools.grain_type_colormap">
+<code class="sig-prename descclassname">pyniviz.tools.</code><code class="sig-name descname">grain_type_colormap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyniviz.tools.grain_type_colormap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a matplotlib colormap suitable for grain-type classification plots</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyniviz.tools.plot_grid">
+<code class="sig-prename descclassname">pyniviz.tools.</code><code class="sig-name descname">plot_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">information</span></em>, <em class="sig-param"><span class="n">var_to_plot</span></em>, <em class="sig-param"><span class="n">vmin</span></em>, <em class="sig-param"><span class="n">vmax</span></em>, <em class="sig-param"><span class="n">xmin</span></em>, <em class="sig-param"><span class="n">xmax</span></em>, <em class="sig-param"><span class="n">ymin</span></em>, <em class="sig-param"><span class="n">ymax</span></em>, <em class="sig-param"><span class="n">file_name</span></em>, <em class="sig-param"><span class="n">c_scheme</span></em>, <em class="sig-param"><span class="n">yax_shift</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyniviz.tools.plot_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a 2D numpy array for some snowpack variable (y axis height, x axis time).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>information</strong> (<em>dict</em>) – includes the grid to plot and some information about the x/y axes</p></li>
+<li><p><strong>var_to_plot</strong> (<em>str</em>) – variable to plot, gets used to name the colorbar</p></li>
+<li><p><strong>vmin</strong> (<em>float</em>) – min value for the colorbar</p></li>
+<li><p><strong>vmax</strong> (<em>float</em>) – max value for the colorbar</p></li>
+<li><p><strong>xmin</strong> (<em>datetime.datetime</em>) – represents time from which data appears on the grid</p></li>
+<li><p><strong>xmax</strong> (<em>datetime.datetime</em>) – represents time to which data appears on the grid</p></li>
+<li><p><strong>ymin</strong> (<em>float</em>) – represents min height to which data appears on the grid</p></li>
+<li><p><strong>ymax</strong> (<em>float</em>) – represents max height to which data appears on the grid</p></li>
+<li><p><strong>file_name</strong> – if present represents where the image should be saved</p></li>
+<li><p><strong>c_scheme</strong> – represents the scheme of the colorbar e.g. ‘plasma’, ‘Blues’.</p></li>
+<li><p><strong>yax_shift</strong> – shifts the y axis ticks down a bit (useful if shifted to a ref value , e.g. 400cm)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Nothing, put in a PR if you want it to!</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyniviz.tools.pro_code_dict">
+<code class="sig-prename descclassname">pyniviz.tools.</code><code class="sig-name descname">pro_code_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">code</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">inverse</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">return_all</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyniviz.tools.pro_code_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tools involving the .PRO variable codes.</p>
+<p>Initial functionality was to accept a code (e.g. ‘0503’) and return the var_name (e.g. “element
+temperature (degC)”). Another option is to specify the variable and get the code, using inverse = True.
+Alternatively set return_all=True and both other false to just return the full code dictionary.</p>
+<p>#TODO this function currently outputs either a string or a dict. Not great.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<em>str</em>) – four character string represening a number (e.g. ‘0502’)</p></li>
+<li><p><strong>inverse</strong> (<em>bool</em>) – If true then the function takes a variable and returns its code</p></li>
+<li><p><strong>return_all</strong> (<em>bool</em>) – Returns a dict of all string codes and corresponding variable names.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>It depends!</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyniviz.tools.read_pro">
+<code class="sig-prename descclassname">pyniviz.tools.</code><code class="sig-name descname">read_pro</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">var_to_plot</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyniviz.tools.read_pro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a .PRO file and returns a list of dataframes representing the evolving state of the snowpack.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – String pointing to the location of the .PRO file to be read</p></li>
+<li><p><strong>var_to_plot</strong> – Optional, use this if you’re only interested in one variable.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyniviz.tools.round">
+<code class="sig-prename descclassname">pyniviz.tools.</code><code class="sig-name descname">round</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span></em>, <em class="sig-param"><span class="n">divisor</span></em>, <em class="sig-param"><span class="n">direction</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyniviz.tools.round" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rounds a number to the nearest, user-specified value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num</strong> (<em>float</em>) – the number to be rounded.</p></li>
+<li><p><strong>divisor</strong> (<em>int</em>) – the number to be rounded to, e.g. 5 for rounding to nearest 5.</p></li>
+<li><p><strong>direction</strong> (<em>str</em>) – ‘up’ or ‘down’ specifiying whether the number should be rounded up or down.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The rounded number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyniviz.tools.series_from_line">
+<code class="sig-prename descclassname">pyniviz.tools.</code><code class="sig-name descname">series_from_line</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variables</span></em>, <em class="sig-param"><span class="n">varname</span></em>, <em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyniviz.tools.series_from_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of values (for a given variable) from a dictionary representing a barey-processed .PRO file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variables</strong> – a dictionary, top level broken down by variable, next level is a dict of strings which each represent</p></li>
+<li><p><strong>state of a snowpack</strong> (<em>the</em>) – </p></li>
+<li><p><strong>varname</strong> – the variable of interest</p></li>
+<li><p><strong>index</strong> – the day on which you should retrun the snowpack state for the variable of interest</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>floats for the variable of interest, unless variable is day in which case it’s a list of datetime objects</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyniviz.tools.snowpro_from_snapshot">
+<code class="sig-prename descclassname">pyniviz.tools.</code><code class="sig-name descname">snowpro_from_snapshot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">date_index</span></em>, <em class="sig-param"><span class="n">variables</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyniviz.tools.snowpro_from_snapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a dictionary of variables (a processed .Pro file) and returns a pandas dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date_index</strong> – int representing the index (day) that the snowpro object should be generated for</p></li>
+<li><p><strong>variables</strong> – what variables should be used in the snowpro to describe the snowpack on that day</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>single dataframe representing the state of the snowpack at a point in time.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>df (pandas dataframe)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyniviz.tools.transform_grid_for_grain_type">
+<code class="sig-prename descclassname">pyniviz.tools.</code><code class="sig-name descname">transform_grid_for_grain_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyniviz.tools.transform_grid_for_grain_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms a grid of three-digit grain-types to one suitable for plotting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>grid</strong> (<em>np.array</em>) – a grid of three-digit grain types (Swiss classifiction F1F2F3</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a processed grid where all plotting values are 0-1 and rounded to nearest .1</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>grid (np.array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyniviz.tools.variable_shortenings">
+<code class="sig-prename descclassname">pyniviz.tools.</code><code class="sig-name descname">variable_shortenings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">code</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyniviz.tools.variable_shortenings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles user input of what variable to plot.</p>
+<p>If the code is a .PRO recognized code, then that same code is returned. Else if it’s a pyniviz recognised
+shortening of the code (e.g. <cite>density</cite>), then the full code is found and returned. Finally if neither of those
+is the case, an error is raised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>str</em>) – a string code to represent what variable the user is interested in.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an approved code that is one of the .PRO format’s recognized variables.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>code (str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyniviz.tools.vectorized_rounder">
+<code class="sig-prename descclassname">pyniviz.tools.</code><code class="sig-name descname">vectorized_rounder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyniviz.tools.vectorized_rounder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a vectorised function that rounds numbers to the nearest integer</p>
+<p>TODO: Improve the expressiveness of these variable names and comment code</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyniviz">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyniviz" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="pyniviz" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Robbie Mallett
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
