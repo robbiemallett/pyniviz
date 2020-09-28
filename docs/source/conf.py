@@ -25,7 +25,7 @@ author = 'Robbie Mallett'
 # The full version, including alpha/beta/rc tags
 release = '1.0.0'
 
-autodoc_mock_imports = ['pandas']
+autodoc_mock_imports = ['pandas','numpy']
 
 
 # -- General configuration ---------------------------------------------------
