@@ -8,6 +8,6 @@ before_install:
   - python setup.py install
   - chmod +x tests/test_read_pro.py
 script:
-  - tests/test_read_pro.py
+  - python3 tests/test_read_pro.py
 after_success:
   - codecov
