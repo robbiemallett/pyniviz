@@ -1,0 +1,13 @@
+language: python
+python:
+  - 3.6
+before_install:
+  -python --version
+  - pip install -U pip
+  - pip install unittest
+  - pip install codecov
+script:
+  - setup.py
+  - tests/test_read_pro.py
+after_success:
+  - codecov
