@@ -1,5 +1,5 @@
 
-from tools import read_pro, create_grid, plot_grid, variable_shortenings
+from pyniviz.tools import read_pro, create_grid, plot_grid, variable_shortenings
 import datetime
 
 def plot_pro(path,
@@ -69,22 +69,3 @@ def plot_pro(path,
 # 'bulk salinity (g/kg)',
 # 'brine salinity (g/kg)',
 # 'thickness_m',
-
-if __name__ == "__main__":
-
-    start_date = datetime.datetime(year=2020,
-                                   month=1,
-                                   day=29)
-    end_date = datetime.datetime(year=2020,
-                                 month=2,
-                                 day=8)
-
-
-    plot_pro('/home/robbie/Dropbox/SERF/Rosie/SERF_SERF_experiment.pro',
-         variable= 'temperature',
-             ymin=400,
-             ymax=415,
-             xmin=start_date,
-             xmax=end_date,
-             c_scheme='Blues',
-             yax_shift=400)
