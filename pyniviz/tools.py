@@ -8,6 +8,27 @@ from scipy import interpolate
 import math
 from matplotlib.colors import LinearSegmentedColormap
 
+def get_shortenings():
+
+    """ Dictionary of pyniviz-approved variable name shortenings.
+
+    Returns: dictionary with keys being shortenings, values full names.
+
+    """
+
+    shortenings = {'density':'element density (kg m-3)',
+                    'temperature':'element temperature (degC)',
+                    'lwc':'liquid water content by volume (%)',
+                    'grain size':'grain size (mm)',
+                    'grain type':'grain type (Swiss Code F1F2F3)',
+                    'ivf':'ice volume fraction (%)',
+                    'avf':'air volume fraction (%)',
+                    'd_opt':'optical equivalent grain size (mm)',
+                    'bulk_sal':'bulk salinity (g/kg)',
+                    'brine_sal':'brine salinity (g/kg)',
+                    'thickness':'thickness_m'}
+    return(shortenings)
+
 def variable_shortenings(code):
 
     """Handles user input of what variable to plot.
@@ -24,17 +45,7 @@ def variable_shortenings(code):
 
         """
 
-    shortenings = {'density':'element density (kg m-3)',
-                    'temperature':'element temperature (degC)',
-                    'lwc':'liquid water content by volume (%)',
-                    'grain size':'grain size (mm)',
-                    'grain type':'grain type (Swiss Code F1F2F3)',
-                    'ivf':'ice volume fraction (%)',
-                    'avf':'air volume fraction (%)',
-                    'd_opt':'optical equivalent grain size (mm)',
-                    'bulk_sal':'bulk salinity (g/kg)',
-                    'brine_sal':'brine salinity (g/kg)',
-                    'thickness':'thickness_m'}
+    shortenings = get_shortenings()
 
     if code.lower() in list(shortenings.keys()):
         return(shortenings[code])
