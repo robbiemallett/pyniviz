@@ -1,9 +1,6 @@
 
-from tools import read_pro
-from tools import create_grid
-from tools import plot_grid, variable_shortenings
+from tools import read_pro, create_grid, plot_grid, variable_shortenings
 import datetime
-
 
 def plot_pro(path,
              variable,
@@ -16,6 +13,25 @@ def plot_pro(path,
              file_name=None,
              c_scheme='plasma_r',
              yax_shift=0):
+
+    """
+
+    Args:
+        path (str): String pointing to the location of the .PRO file to be read
+        variable (str): Variable to plot, can be a .pro recognised code or a niviz approved shortening
+        vmin (float): optional, min value for the colorbar
+        vmax (float): optional, max value for the colorbar
+        xmin (datetime.datetime): optional, represents time from which data appears on the plot
+        xmax (datetime.datetime): optional, represents time to which data appears on the plot
+        ymin (float): optional, represents min height to which data appears on the plot
+        ymax (float): optional, represents max height to which data appears on the plot
+        file_name (str): optional, if present represents where the image should be saved
+        c_scheme (str): optional, represents the scheme of the colorbar e.g. 'plasma', 'Blues'.
+        yax_shift (float): optional, shifts the y axis ticks down a bit (useful if shifted to a ref value , e.g. 400cm)
+
+    Returns:
+
+    """
 
     variable = variable_shortenings(variable)
 

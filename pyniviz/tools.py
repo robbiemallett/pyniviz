@@ -10,7 +10,19 @@ from matplotlib.colors import LinearSegmentedColormap
 
 def variable_shortenings(code):
 
-    """Converts a list of recognised codes to the required variable string, or takes the strings themselves"""
+    """Handles user input of what variable to plot.
+
+    If the code is a .PRO recognized code, then that same code is returned. Else if it's a pyniviz recognised
+    shortening of the code (e.g. `density`), then the full code is found and returned. Finally if neither of those
+    is the case, an error is raised.
+
+    Args:
+        code (str): a string code to represent what variable the user is interested in.
+
+    Returns:
+        code (str): an approved code that is one of the .PRO format's recognized variables.
+
+        """
 
     shortenings = {'density':'element density (kg m-3)',
                     'temperature':'element temperature (degC)',
@@ -34,6 +46,9 @@ def variable_shortenings(code):
 
 
 def grain_type_colormap():
+
+    """Returns a matplotlib colormap suitable for grain-type classification plots"""
+
     colors = [('lime'),  # 1, precipitation particles
               ('green'),  # 2, Decomposing fragmented PP
               ('yellow'),  # 3 Rounded Grains (RG)
@@ -54,6 +69,8 @@ def grain_type_colormap():
 
 def get_grain_tick_labels():
 
+    """Returns a list of labels for a grain-type classification plot"""
+
     grain_tick_labels = ['Precipitation particles',
                          'Decomposing fragmented PP',
                          'Rounded Grains',
@@ -69,6 +86,12 @@ def get_grain_tick_labels():
 ##############################################################################################
 
 def vectorized_rounder():
+
+    """Returns a vectorised function that rounds numbers to the nearest integer
+
+    TODO: Improve the expressiveness of these variable names and comment code
+    """
+
     def f(num):
         if np.isnan(num):
             return np.nan
@@ -80,6 +103,15 @@ def vectorized_rounder():
     return(vf)
 
 def transform_grid_for_grain_type(grid):
+
+    """Transforms a grid of three-digit grain-types to one suitable for plotting.
+
+    Args:
+        grid (np.array): a grid of three-digit grain types (Swiss classifiction F1F2F3
+
+    Returns:
+        grid (np.array): a processed grid where all plotting values are 0-1 and rounded to nearest .1
+    """
 
     vf = vectorized_rounder()
 
@@ -96,6 +128,21 @@ def create_grid(spl,
                  xmax,
                  ymin,
                  ymax):
+
+    """Takes the list of dataframes and makes a 2D numpy array of a given variable and some info.
+
+    Args:
+        spl (list): list of dataframes, each frame representing the snowpack at a point in time
+        var_to_plot: (string): a .PRO recognized string code of the variable to plot. Must be a col in dataframes
+        xmin (datetime.datetime): dt object representing the time from which the list of dataframes should be analysed
+        xmax (datetime.datetime): dt object representing the time to which the list of dataframes should be analysed
+        ymin (float): value in centimeters representing the height from which the .PRO snowpack should be analysed
+        ymax (float): value in centimeters representing the height to which the .PRO snowpack should be analysed
+
+    Returns:
+        return_dict (dict): a dictionary containing both the grid and some other info about its x/y axes
+
+        """
 
     # Find the lowest and the highest heights to calibrate the ylims
 
@@ -145,10 +192,12 @@ def create_grid(spl,
 
         grid[: ,count] = np.flip(regular_variables, axis=0)
 
-    return({'grid':grid,
-            'max_height':max_height,
-            'min_height':min_height,
-            'dates':dates})
+    return_dict = {'grid':grid,
+                'max_height':max_height,
+                'min_height':min_height,
+                'dates':dates}
+
+    return(return_dict)
 
 def plot_grid(information,
                  var_to_plot,
@@ -161,6 +210,26 @@ def plot_grid(information,
                  file_name,
                  c_scheme,
                  yax_shift=None):
+
+    """Plots a 2D numpy array for some snowpack variable (y axis height, x axis time).
+
+    Args:
+        information (dict): includes the grid to plot and some information about the x/y axes
+        var_to_plot (str): variable to plot, gets used to name the colorbar
+        vmin (float): min value for the colorbar
+        vmax (float): max value for the colorbar
+        xmin (datetime.datetime): represents time from which data appears on the grid
+        xmax (datetime.datetime): represents time to which data appears on the grid
+        ymin (float): represents min height to which data appears on the grid
+        ymax (float): represents max height to which data appears on the grid
+        file_name: if present represents where the image should be saved
+        c_scheme: represents the scheme of the colorbar e.g. 'plasma', 'Blues'.
+        yax_shift: shifts the y axis ticks down a bit (useful if shifted to a ref value , e.g. 400cm)
+
+    Returns:
+        Nothing, put in a PR if you want it to!
+
+    """
 
     grain_type = True if "grain type" in var_to_plot else False
 
@@ -226,33 +295,41 @@ def plot_grid(information,
 
 
 def round(num, divisor, direction):
-    if direction == 'down':
-        return floor(num / divisor) * divisor
-    elif direction == 'up':
-        return ceil(num / divisor) * divisor
 
-def read_pro(path,var_to_plot):
+    """Rounds a number to the nearest, user-specified value.
 
-    """ Reads a .PRO file line by line and turns it into a list of python-usable objects (members of snowpro class).
-
-    PRO files are pretty wild - they're indexed by var codes (0500 - 0605) that represent the snowpack variables of
-    interest. This model is only interested in some of them, so has a var_codes list to select those (not interested in
-    skiier stability index for instance!). Once the pro file is read into memory, for each var_code, the function
-    iterates through the text file and extracts the lines beginning with the code. It breaks up the lines (which each
-    correspond to a comma-separated, layer-wise list of values), and turns the line into a list.
-
-    #TODO improve this documentation
-
-
+    Args:
+        num (float): the number to be rounded.
+        divisor (int): the number to be rounded to, e.g. 5 for rounding to nearest 5.
+        direction (str): 'up' or 'down' specifiying whether the number should be rounded up or down.
 
     Returns:
-        list of snowpro objects corresponding to the evolution of a track.
+        The rounded number.
+    """
+
+    if direction.lower() == 'down':
+        return floor(num / divisor) * divisor
+    elif direction.lower() == 'up':
+        return ceil(num / divisor) * divisor
+
+def read_pro(path,var_to_plot= None):
+
+    """ Reads a .PRO file and returns a list of dataframes representing the evolving state of the snowpack.
+
+    Args:
+        path (str): String pointing to the location of the .PRO file to be read
+        var_to_plot: Optional, use this if you're only interested in one variable.
+
+    Returns:
 
     """
 
     # Which variables are you interested in?
 
-    var_codes = ['0500','0501',pro_code_dict(var_to_plot,inverse=True)]
+    if var_to_plot:
+        var_codes = ['0500','0501',pro_code_dict(var_to_plot,inverse=True)]
+    else:
+        var_codes = [pro_code_dict(return_all=True).keys()]
 
     # Set up the dictionary to be returned. Dictionary is organised by variable name.
 
@@ -289,18 +366,21 @@ def read_pro(path,var_to_plot):
 
 
 def pro_code_dict(code=False, inverse=False, return_all=False):
-    """Get the name of a variable from its var_code (four character numeric string).
+    """Tools involving the .PRO variable codes.
 
-    Alternatively set return_all=True to just return the full code dictionary, from which you can choose
+    Initial functionality was to accept a code (e.g. '0503') and return the var_name (e.g. "element
+    temperature (degC)"). Another option is to specify the variable and get the code, using inverse = True.
+    Alternatively set return_all=True and both other false to just return the full code dictionary.
 
     #TODO this function currently outputs either a string or a dict. Not great.
 
     Args:
-        code: four character string represening a number (e.g. '0502' -> element density)
-        return_all: bool, if you just want to return a dictionary of string codes and corresponding variable names.
+        code (str): four character string represening a number (e.g. '0502')
+        inverse (bool): If true then the function takes a variable and returns its code
+        return_all (bool): Returns a dict of all string codes and corresponding variable names.
 
     Returns:
-
+        It depends!
     """
 
     pro_code_dict = {"0500": "Date",
@@ -349,26 +429,24 @@ def pro_code_dict(code=False, inverse=False, return_all=False):
 
 
 def snowpro_from_snapshot(date_index, variables):
-    """ Takes a dictionary of variables (a processed .Pro file) and returns dataframes
+    """ Takes a dictionary of variables (a processed .Pro file) and returns a pandas dataframe
 
     Args:
         date_index: int representing the index (day) that the snowpro object should be generated for
         variables: what variables should be used in the snowpro to describe the snowpack on that day
 
     Returns:
-        single snowpro object representing the state of the snowpack at a point in time.
+        df (pandas dataframe): single dataframe representing the state of the snowpack at a point in time.
 
     """
+
+    my_datetime = series_from_line(variables, 'Date', date_index)
 
     dataframe_dict = {}
 
     for varname in variables.keys():
 
-        if varname == 'Date':
-
-            my_datetime = series_from_line(variables, varname, date_index)
-
-        else:
+        if varname != 'Date':
 
             dataframe_dict[varname] = series_from_line(variables, varname, date_index)
 
@@ -439,21 +517,21 @@ def series_from_line(variables, varname, index):
         return (datetime.datetime.strptime(series[1][:-1], "%d.%m.%Y %H:%M:%S"))
 
 
-class snowpro:
-    """A combined column of ice and snow with vertical profiles
-    and variables such as date, snow height and ice thickness"""
-
-    def __init__(self, iceframe, snowframe, datetime):
-
-        self.iceframe = iceframe
-        self.snowframe = snowframe
-        self.datetime = datetime
-        self.snowdepth = np.sum(snowframe['thickness_m'])
-        self.snowdensity = np.mean(snowframe['element density (kg m-3)'])
-        self.icethickness = np.sum(iceframe['thickness_m'])
-
-        if snowframe.empty:
-            self.sst, self.ist = np.nan, np.nan
-        else:
-            self.sst = snowframe['element temperature (degC)'].iloc[0]
-            self.ist = snowframe['element temperature (degC)'].iloc[-1]
+# class snowpro:
+#     """A combined column of ice and snow with vertical profiles
+#     and variables such as date, snow height and ice thickness"""
+#
+#     def __init__(self, iceframe, snowframe, datetime):
+#
+#         self.iceframe = iceframe
+#         self.snowframe = snowframe
+#         self.datetime = datetime
+#         self.snowdepth = np.sum(snowframe['thickness_m'])
+#         self.snowdensity = np.mean(snowframe['element density (kg m-3)'])
+#         self.icethickness = np.sum(iceframe['thickness_m'])
+#
+#         if snowframe.empty:
+#             self.sst, self.ist = np.nan, np.nan
+#         else:
+#             self.sst = snowframe['element temperature (degC)'].iloc[0]
+#             self.ist = snowframe['element temperature (degC)'].iloc[-1]
