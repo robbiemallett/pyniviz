@@ -16,12 +16,12 @@ for index, snapshot in enumerate(list_of_snapshots):
         df_to_plot = snapshot
 
 
-fig, axs = plt.subplots(nrows=1,ncols=2, figsize = (6,3))
+fig, axs = plt.subplots(nrows=1,ncols=2, figsize = (10,5))
 
 axs[0].plot(df_to_plot['element temperature (degC)'],
          df_to_plot['height [> 0: top, < 0: bottom of elem.] (cm)'])
-axs[0].set_ylabel('Height (cm)')
-axs[0].set_xlabel(r'Snow Temperature ($\degree$ C)')
+axs[0].set_ylabel('Height (cm)', fontsize='large')
+axs[0].set_xlabel(r'Snow Temperature ($\degree$ C)', fontsize='large')
 
 axs[0].annotate(datetime.datetime.strftime(time_of_interest, '%d/%m/%Y %H:%M'),
              xy=(-0.2,1.1), xycoords='axes fraction', fontsize = 'large')
@@ -29,8 +29,8 @@ axs[0].annotate(datetime.datetime.strftime(time_of_interest, '%d/%m/%Y %H:%M'),
 
 axs[1].plot(df_to_plot['grain size (mm)'],
          df_to_plot['height [> 0: top, < 0: bottom of elem.] (cm)'])
-axs[1].set_ylabel('Height (cm)')
-axs[1].set_xlabel('grain size (mm)')
+axs[1].set_ylabel('Height (cm)', fontsize='large')
+axs[1].set_xlabel('grain size (mm)', fontsize='large')
 
 plt.savefig('snapshot', dpi=500, bbox_inches='tight')
 plt.show()
