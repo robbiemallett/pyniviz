@@ -1,6 +1,6 @@
 # pyniviz
 
-pyniviz is a Python tool for visualising the .pro output of the SNOWPACK model.
+pyniviz is a Python tool for analysing and visualising the .pro output of the SNOWPACK model.
 
 [![PyPI version](https://badge.fury.io/py/pyniviz.svg)](https://badge.fury.io/py/pyniviz)   [![Build Status](https://travis-ci.org/robbiemallett/pyniviz.svg?branch=master)](https://travis-ci.org/robbiemallett/pyniviz)
 
@@ -65,9 +65,9 @@ main.plot_pro('sample.pro',
 ```
 <img src="https://github.com/robbiemallett/pyniviz/blob/master/examples/gt_fig.png" width="500" height="250">
 
-## Advanced Usage: Looking at a snapshot
+## Advanced Usage: Looking at a snapshot of the snowpack
 
-We can also use the pyniviz tools package to look at the snowpack more closely and at certain points in time. Under the hood pyniviz stores the information contained in the .pro file as a pandas dataframe for every timestep. To get a list of these dataframes you can call ```main.read_pro()```. The time that each dataframe represents is stored in the dataframes under the 'dates' column. So to get the DataFrame corresponding to the time you want you must iterate through them all, check a value in their 'dates' column and assign the dataframe of interest to a variable. Once you've selected the DataFrame you want, you can simply plot the variables.
+We can also use the pyniviz tools package to investigate the snowpack at certain points in time. Under the hood pyniviz stores the information contained in the .pro file as a pandas dataframe for every timestep. To get a list of these dataframes you can call ```main.read_pro()```. The time that each dataframe represents is stored in the dataframes under the 'dates' column. So to get the DataFrame corresponding to the time you want you must iterate through them all, check a value in their 'dates' column and assign the dataframe of interest to a variable. Once you've selected the DataFrame you want, you can simply plot the variables.
 
 ```python
 
