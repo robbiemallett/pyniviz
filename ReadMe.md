@@ -47,7 +47,7 @@ main.plot_pro('sample.pro',
                  c_scheme='Reds',
                  yax_shift=400)
 ```
-![T](https://github.com/robbiemallett/pyniviz/blob/master/examples/temp_fig.png =100x20)
+![T](https://github.com/robbiemallett/pyniviz/blob/master/examples/temp_fig.png | width=100)
 
 ## Grain type plot
 
