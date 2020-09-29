@@ -51,6 +51,8 @@ main.plot_pro('sample.pro',
 
 ## Grain type plot
 
+Here we plot the grain types. The code detects this from the ```variable``` keyword and ignores anything passed to c_scheme. 
+
 ```python
 main.plot_pro('sample.pro',
                  variable= 'grain type (Swiss Code F1F2F3)', # Could also just be 'grain type'
@@ -61,12 +63,15 @@ main.plot_pro('sample.pro',
                  yax_shift=400)
                  
 ```
-<img src="https://github.com/robbiemallett/pyniviz/blob/master/examples/gt_fig.png" width="400" height="250">
+<img src="https://github.com/robbiemallett/pyniviz/blob/master/examples/gt_fig.png" width="500" height="250">
 
 ## Advanced Usage: Looking at a snapshot
 
+We can also use the pyniviz tools package to look at the snowpack more closely and at certain points in time. Under the hood pyniviz stores the information contained in the .pro file as a pandas dataframe for every timestep. To get a list of these dataframes you can call ```main.read_pro()```. The time that each dataframe represents is stored in the dataframes under the 'dates' column. So to get the DataFrame corresponding to the time you want you must iterate through them all, check a value in their 'dates' column and assign the dataframe of interest to a variable. Once you've selected the DataFrame you want, you can simply plot the variables.
+
 ```python
 
+# Specify your time of interest
 
 time_of_interest = datetime.datetime(year=2020,month=2,day=11,hour=7)
 
@@ -75,12 +80,15 @@ time_of_interest = datetime.datetime(year=2020,month=2,day=11,hour=7)
 
 list_of_snapshots = main.read_pro('sample.pro')
 
+# Iterate through these dataframes to get the one corresponding to the time of interest
+
 for index, snapshot in enumerate(list_of_snapshots):
     date = snapshot['dates'].iloc[0]
 
     if date == time_of_interest:
-        df_to_plot = snapshot
+        df_to_plot = snapshot 
 
+# Plotting code
 
 fig, axs = plt.subplots(nrows=1,ncols=2, figsize = (6,3))
 
