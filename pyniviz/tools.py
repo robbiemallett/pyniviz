@@ -299,10 +299,11 @@ def plot_grid(information,
     else:                    cbar.set_label(var_to_plot, fontsize='x-large')
 
     ax.set_ylabel('Height (cm)', fontsize='x-large')
-    plt.show()
 
     if file_name:
-        plt.savefig(file_name ,dpi=500)
+        fig.savefig(file_name ,dpi=500, bbox_inches='tight')
+
+    plt.show()
 
 
 def round(num, divisor, direction):

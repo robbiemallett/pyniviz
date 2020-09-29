@@ -18,5 +18,6 @@ main.plot_pro('sample.pro',
                  ymax=415,
                  xmin=start_date,
                  xmax=end_date,
+                 file_name='test_fig.png',
                  c_scheme='Reds',
                  yax_shift=400)
