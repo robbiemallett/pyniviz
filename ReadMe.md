@@ -60,7 +60,7 @@ main.plot_pro('sample.pro',
                  xmax=end_date,
                  yax_shift=400)
                  
-                 ```
+```
 <img src="https://github.com/robbiemallett/pyniviz/blob/master/examples/gt_fig.png" width="400" height="250">
 
 ## Advanced Usage: Looking at a snapshot
