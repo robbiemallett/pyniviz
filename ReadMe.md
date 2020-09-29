@@ -11,7 +11,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install pyniviz
 ```bash
 pip install pyniviz
 ```
-## Documentation & Walkthrough
+## Documentation & Walkthrough Video
 
 You can find full documentation for pyniviz [here](https://pyniviz.readthedocs.io/en/latest/) and a walkthrough video [here](https://www.youtube.com/watch?v=WXEUVK0xgfY).
 
