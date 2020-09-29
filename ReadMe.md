@@ -15,6 +15,11 @@ pip install pyniviz
 
 You can find full documentation for pyniviz [here](https://pyniviz.readthedocs.io/en/latest/).
 
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+This project has a highly permissive [MIT licence](https://github.com/robbiemallett/pyniviz/blob/master/LICENCE.txt). However I'd really appreciate it if you could let me know about any published plots made with this code so I can get some feedback on this project.
 
 ## Basic Usage for a continuous variable
 
@@ -34,7 +39,7 @@ end_date = datetime.datetime(year=2020,
 
 
 main.plot_pro('sample.pro',
-                 variable= 'temperature',
+                 variable= 'element temperature (degC)', # Could also just be 'temperature'
                  ymin=400,
                  ymax=415,
                  xmin=start_date,
@@ -43,8 +48,15 @@ main.plot_pro('sample.pro',
                  yax_shift=400)
 ```
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+## Grain type plot
 
-## License
-This project has a highly permissive [MIT licence](https://github.com/robbiemallett/pyniviz/blob/master/LICENCE.txt). However I'd really appreciate it if you could let me know about any published plots made with this code so I can get some feedback on this project.
+```python
+main.plot_pro('sample.pro',
+                 variable= 'grain type (Swiss Code F1F2F3)', # Could also just be 'grain type'
+                 ymin=400,
+                 ymax=415,
+                 xmin=start_date,
+                 xmax=end_date,
+                 yax_shift=400)
+                 
+                 ```
