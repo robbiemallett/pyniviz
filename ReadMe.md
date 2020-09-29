@@ -51,6 +51,8 @@ main.plot_pro('sample.pro',
 
 ## Grain type plot
 
+Here we plot the grain types. The code detects this from the ```variable``` keyword and ignores anything passed to c_scheme. 
+
 ```python
 main.plot_pro('sample.pro',
                  variable= 'grain type (Swiss Code F1F2F3)', # Could also just be 'grain type'
