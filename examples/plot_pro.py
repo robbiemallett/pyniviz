@@ -18,6 +18,15 @@ main.plot_pro('sample.pro',
                  ymax=415,
                  xmin=start_date,
                  xmax=end_date,
-                 file_name='test_fig.png',
+                 file_name='temp_fig.png',
                  c_scheme='Reds',
+                 yax_shift=400)
+
+main.plot_pro('sample.pro',
+                 variable= 'grain type',
+                 ymin=400,
+                 ymax=415,
+                 xmin=start_date,
+                 xmax=end_date,
+                 file_name='gt_fig.png',
                  yax_shift=400)
