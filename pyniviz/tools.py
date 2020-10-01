@@ -530,6 +530,66 @@ def series_from_line(variables, varname, index):
         return (datetime.datetime.strptime(series[1][:-1], "%d.%m.%Y %H:%M:%S"))
 
 
+def read_smet(path, var):
+
+    """ Reads a .smet file and returns a time series of the defined variable as a pandas data frame.
+
+    Args:
+        path (str): String pointing to the location of the .smet file to be read.
+        var  (str): Variable you want to plot
+
+    Returns:
+        Time series of defined variable as a pandas data frame.
+
+    """
+
+    # First, identify which row the data begins in.
+
+    n = 100 # Only check the first 100 rows
+
+    column_var = pd.read_csv(path, nrows=n)
+
+    first_data_row = np.nan
+
+    for j in range(1, n):
+
+        if (column_var.iloc[j] == '[DATA]').all():
+
+            first_data_row = j + 2 # Addhock solution
+
+            break
+
+    # Next, identify which column to retrieve
+
+    field_row =  np.loadtxt(path, skiprows=first_data_row - 2, max_rows=1, dtype='str')
+
+    data_col = np.where(field_row == var)[0][0]
+
+    data_col = data_col - 2 # Account for extra strings (Addhock)
+
+    # Now, load data
+
+    time = np.loadtxt(path, skiprows=first_data_row, usecols = 0, dtype = 'str')
+
+    time = pd.to_datetime(time, format='%Y-%m-%dT%H:%M:%S')
+
+    ts = np.loadtxt(path, skiprows=first_data_row, usecols=data_col)
+
+    # Create pandas data frame and set no data value to np.nan (0 if looking at MS_Redeposit_dHS)
+
+    df = pd.DataFrame(ts, index=time)
+
+    if var == "MS_Redeposit_dHS" or var == "MS_Redeposit_dRHO":
+
+        df[df == -999] = 0
+
+    else:
+
+        df[df == -999] = np.nan
+
+    return df
+
+
 # class snowpro:
 #     """A combined column of ice and snow with vertical profiles
 #     and variables such as date, snow height and ice thickness"""
