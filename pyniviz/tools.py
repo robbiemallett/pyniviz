@@ -529,7 +529,6 @@ def series_from_line(variables, varname, index):
 
         return (datetime.datetime.strptime(series[1][:-1], "%d.%m.%Y %H:%M:%S"))
 
-
 def read_smet(path, var):
 
     """ Reads a .smet file and returns a time series of the defined variable as a pandas data frame.
@@ -543,51 +542,37 @@ def read_smet(path, var):
 
     """
 
-    # First, identify which row the data begins in.
+    # Load .smet file as a Pandas data frame
+    df = pd.read_csv(path)
 
-    n = 100 # Only check the first 100 rows
+    # Determine indices for data retrieval
+    bump = 2
 
-    column_var = pd.read_csv(path, nrows=n)
+    fields_row = np.where(df[df.columns[0]].str.startswith("fields"))[0][0] + bump
 
-    first_data_row = np.nan
+    data_row = np.where(df[df.columns[0]] == '[DATA]')[0][0] + bump
 
-    for j in range(1, n):
+    fields =  np.loadtxt(path, skiprows=fields_row - 1, max_rows=1, dtype='str')
 
-        if (column_var.iloc[j] == '[DATA]').all():
+    data_col = np.where(fields == var)[0][0] - bump
 
-            first_data_row = j + 2 # Addhock solution
-
-            break
-
-    # Next, identify which column to retrieve
-
-    field_row =  np.loadtxt(path, skiprows=first_data_row - 2, max_rows=1, dtype='str')
-
-    data_col = np.where(field_row == var)[0][0]
-
-    data_col = data_col - 2 # Account for extra strings (Addhock)
-
-    # Now, load data
-
-    time = np.loadtxt(path, skiprows=first_data_row, usecols = 0, dtype = 'str')
+    # Creates pandas data frame
+    time = np.loadtxt(path, skiprows=data_row, usecols=0, dtype = 'str')
 
     time = pd.to_datetime(time, format='%Y-%m-%dT%H:%M:%S')
 
-    ts = np.loadtxt(path, skiprows=first_data_row, usecols=data_col)
+    data = np.loadtxt(path, skiprows=data_row, usecols=data_col)
 
-    # Create pandas data frame and set no data value to np.nan (0 if looking at MS_Redeposit_dHS)
+    ts = pd.DataFrame(data, index=time)
 
-    df = pd.DataFrame(ts, index=time)
+    # Set no data values to nan
+    ts[ts == -999] = np.nan
 
-    if var == "MS_Redeposit_dHS" or var == "MS_Redeposit_dRHO":
+    # Return time series as Pandas data frame
+    return ts
 
-        df[df == -999] = 0
 
-    else:
 
-        df[df == -999] = np.nan
-
-    return df
 
 
 # class snowpro:
