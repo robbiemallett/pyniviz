@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='pyniviz',
-    version='1.0.10',
+    version='1.1.0',
     packages=['pyniviz'],
     url='https://github.com/robbiemallett/pyniviz',
     license='MIT',
