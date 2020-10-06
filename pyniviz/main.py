@@ -1,5 +1,5 @@
 
-from pyniviz.tools import read_pro, create_grid, plot_grid, variable_shortenings
+from pyniviz.tools import read_pro, create_grid, plot_grid, variable_shortenings, read_smet
 import datetime
 
 def plot_pro(path,
@@ -55,6 +55,12 @@ def plot_pro(path,
                  file_name,
                  c_scheme,
                  yax_shift)
+
+def plot_smet(path, var): 
+
+    df = read_smet(path, var)
+
+    df.plot()
 
 # SAMPLE VARIABLES
 

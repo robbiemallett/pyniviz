@@ -529,6 +529,51 @@ def series_from_line(variables, varname, index):
 
         return (datetime.datetime.strptime(series[1][:-1], "%d.%m.%Y %H:%M:%S"))
 
+def read_smet(path, var):
+
+    """ Reads a .smet file and returns a time series of the defined variable as a pandas data frame.
+
+    Args:
+        path (str): String pointing to the location of the .smet file to be read.
+        var  (str): Variable you want to plot
+
+    Returns:
+        Time series of defined variable as a pandas data frame.
+
+    """
+
+    # Load .smet file as a Pandas data frame
+    df = pd.read_csv(path)
+
+    # Determine indices for data retrieval
+    bump = 2
+
+    fields_row = np.where(df[df.columns[0]].str.startswith("fields"))[0][0] + bump
+
+    data_row = np.where(df[df.columns[0]] == '[DATA]')[0][0] + bump
+
+    fields =  np.loadtxt(path, skiprows=fields_row - 1, max_rows=1, dtype='str')
+
+    data_col = np.where(fields == var)[0][0] - bump
+
+    # Creates pandas data frame
+    time = np.loadtxt(path, skiprows=data_row, usecols=0, dtype = 'str')
+
+    time = pd.to_datetime(time, format='%Y-%m-%dT%H:%M:%S')
+
+    data = np.loadtxt(path, skiprows=data_row, usecols=data_col)
+
+    ts = pd.DataFrame(data, index=time)
+
+    # Set no data values to nan
+    ts[ts == -999] = np.nan
+
+    # Return time series as Pandas data frame
+    return ts
+
+
+
+
 
 # class snowpro:
 #     """A combined column of ice and snow with vertical profiles
