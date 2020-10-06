@@ -2,7 +2,7 @@
 
 pyniviz is a Python tool for analysing and visualising the .pro output of the SNOWPACK model.
 
-[![PyPI version](https://badge.fury.io/py/pyniviz.svg)](https://badge.fury.io/py/pyniviz)   [![Build Status](https://travis-ci.org/robbiemallett/pyniviz.svg?branch=master)](https://travis-ci.org/robbiemallett/pyniviz)
+[![PyPI version](https://badge.fury.io/py/pyniviz.svg)](https://badge.fury.io/py/pyniviz)   [![Build Status](https://travis-ci.org/robbiemallett/pyniviz.svg?branch=master)](https://travis-ci.org/robbiemallett/pyniviz) [![DOI](https://zenodo.org/badge/298647350.svg)](https://zenodo.org/badge/latestdoi/298647350)
 
 ## Installation
 
