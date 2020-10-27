@@ -12,7 +12,7 @@ def plot_pro(path,
              ymin=None,
              ymax=None,
              file_name=None,
-             c_scheme='plasma_r',
+             c_scheme='plasma',
              yax_shift=0,
              subplot=None,
              difference_with=None):

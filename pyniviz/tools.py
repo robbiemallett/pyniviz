@@ -17,12 +17,17 @@ def get_shortenings():
     """
 
     shortenings = {'density':'element density (kg m-3)',
+                   'sphericity':'sphericity (1)',
+                   'dendricity':'dendricity (1)',
+                   'bond size':'bond size (mm)',
                     'temperature':'element temperature (degC)',
                     'lwc':'liquid water content by volume (%)',
                     'grain size':'grain size (mm)',
+                    'thermal conductivity':'thermal conductivity (W K-1 m-1)',
                     'grain type':'grain type (Swiss Code F1F2F3)',
                     'ivf':'ice volume fraction (%)',
                     'avf':'air volume fraction (%)',
+                    'lwf':'liquid water content by volume (%)',
                     'd_opt':'optical equivalent grain size (mm)',
                     'bulk_sal':'bulk salinity (g/kg)',
                     'brine_sal':'brine salinity (g/kg)',
@@ -52,8 +57,7 @@ def variable_shortenings(code):
     elif code in list(shortenings.values()):
         return(code)
     else:
-        print(f'Variable not recognised, must be from the following {list(zip(shortenings.keys(), shortenings.items()))}')
-        raise
+        raise ValueError(f"Variable '{code}' not recognised, must be from {list(zip(shortenings.keys(), shortenings.values()))}")
 
 
 def grain_type_colormap():
@@ -354,7 +358,7 @@ def read_pro(path,var_to_plot= None):
     else:
         var_codes = ['0500', '0501', '0502', '0503', '0506', '0508',
                      '0509', '0511', '0512', '0513', '0515',
-                     '0516', '0535', '0540', '0541']
+                     '0516', '0521', '0535', '0540', '0541']
 
     # Set up the dictionary to be returned. Dictionary is organised by variable name.
 
@@ -582,6 +586,25 @@ def read_smet(path, var):
 
     # Return time series as Pandas data frame
     return ts
+
+def check_difference_with_conditions(ymin,ymax,variable):
+
+    """Checks that the conditions are right to difference two pyniviz plots
+
+    The difference plot method works by subtracting two numpy arrays from each other. For this to be meaninguful,
+    it's essential that the arrays are perfectly overlapping. As such, the y limits should not be automatically
+    determined. They must be specified by the user. Furthermore, the difference method cannot be used with a
+    categorical variable like grain type.
+
+    """
+
+    if variable.lower() in ['grain type (Swiss Code F1F2F3)', 'grain type']:
+        raise ValueError("You are trying to difference a categorical variable like grain type!")
+
+    if all([ymin,ymax]):
+        return 0
+    else:
+        raise ValueError('To use the difference method you must specify y limits.')
 
 
 
