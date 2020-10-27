@@ -12,7 +12,8 @@ def plot_pro(path,
              ymax=None,
              file_name=None,
              c_scheme='plasma_r',
-             yax_shift=0):
+             yax_shift=0,
+             subplot=None):
 
     """
 
@@ -54,13 +55,16 @@ def plot_pro(path,
                  ymax,
                  file_name,
                  c_scheme,
-                 yax_shift)
+                 yax_shift,
+                 subplot)
+
 
 def plot_smet(path, var): 
 
     df = read_smet(path, var)
 
     df.plot()
+
 
 # SAMPLE VARIABLES
 

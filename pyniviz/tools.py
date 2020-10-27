@@ -220,7 +220,8 @@ def plot_grid(information,
                  ymax,
                  file_name,
                  c_scheme,
-                 yax_shift=None):
+                 yax_shift,
+                 subplot):
 
     """Plots a 2D numpy array for some snowpack variable (y axis height, x axis time).
 
@@ -249,7 +250,10 @@ def plot_grid(information,
 
     # Make the plot
 
-    fig, ax = plt.subplots(1 ,1 ,figsize=(10 ,6))
+    if subplot:
+        ax = subplot
+    else:
+        fig, ax = plt.subplots(1 ,1 ,figsize=(10 ,6))
 
     # Specify the colormap
 
@@ -293,17 +297,24 @@ def plot_grid(information,
 
     ax.tick_params(right=True)
 
-    cbar = fig.colorbar(im, ax=ax, pad=0.075)
-
-    if grain_type:           cbar.ax.set_yticklabels(get_grain_tick_labels())
-    else:                    cbar.set_label(var_to_plot, fontsize='x-large')
-
     ax.set_ylabel('Height (cm)', fontsize='x-large')
 
-    if file_name:
-        fig.savefig(file_name ,dpi=500, bbox_inches='tight')
+    if subplot:
+        return ax
+    else:
 
-    plt.show()
+        cbar = fig.colorbar(im, ax=ax, pad=0.075)
+
+        if grain_type:           cbar.ax.set_yticklabels(get_grain_tick_labels())
+        else:                    cbar.set_label(var_to_plot, fontsize='x-large')
+
+
+        if file_name:
+            fig.savefig(file_name ,dpi=500, bbox_inches='tight')
+
+        plt.show()
+
+        return 0
 
 
 def round(num, divisor, direction):
