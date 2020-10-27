@@ -1,5 +1,6 @@
 
-from pyniviz.tools import read_pro, create_grid, plot_grid, variable_shortenings, read_smet
+from pyniviz.tools import read_pro, create_grid, plot_grid,\
+    variable_shortenings, read_smet, check_difference_with_conditions
 import datetime
 
 def plot_pro(path,
@@ -13,7 +14,8 @@ def plot_pro(path,
              file_name=None,
              c_scheme='plasma_r',
              yax_shift=0,
-             subplot=None):
+             subplot=None,
+             difference_with=None):
 
     """
 
@@ -44,6 +46,12 @@ def plot_pro(path,
                          xmax,
                          ymin,
                          ymax)
+
+    if difference_with:
+        check_difference_with_conditions(ymin,ymax,variable)
+        spl2 = read_pro(difference_with, variable)
+        info2 = create_grid(spl2, variable, xmin, xmax, ymin, ymax)
+        info['grid'] = info['grid'] - info2['grid']
 
     plot_grid(info,
                  variable,
